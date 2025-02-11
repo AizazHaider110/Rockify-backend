@@ -1,0 +1,96 @@
+GET http://localhost:3000
+
+###find all songs req
+GET http://localhost:3000/songs/?page=1&limit=2
+
+###find songs req
+GET http://localhost:3000/songs/1
+
+###create new songs req
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+    "title": "you for me 2",
+    "artists": [1,2],
+    "releasedDate": "2023-09-01",
+    "duration": "03:15",
+    "lyrics": "kaisi yeh aadat hai"
+}
+
+###update songs req
+PUT http://localhost:3000/songs/2
+Content-Type: application/json
+
+{
+    "title": "aadat",
+    "artists": ["atif"],
+    "releasedDate": "2021-09-01",
+    "duration": "03:15",
+    "lyrics": "kaisi yeh aadat hai"
+}
+
+###delete songs req
+DELETE http://localhost:3000/songs/1
+
+
+### Create new playlist
+POST http://localhost:3000/playlists
+Content-Type: application/json
+
+{
+    "name": "my fav songs",
+    "songs": [2,3],
+    "user": 2
+}
+
+### Signup User
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+"firstName": "john",
+"lastName": "doe",
+"email": "john@gmail.com",
+"password": "123456"
+}
+
+### Signup Artist
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+"firstName": "Martin",
+"lastName": "Garrix",
+"email": "martingarrix@gmail.com",
+"password": "123456"
+}
+
+### login Artist
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+"email": "martingarrix@gmail.com",
+"password": "123456"
+}
+
+### Login User
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+ 
+{
+"email": "john@gmail.com",
+"password": "123456"
+}
+
+## Access TOKEN : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoxLCJpYXQiOjE3MzgyNDE2ODcsImV4cCI6MTczODMyODA4N30.c8EHvDFlFiNCCU-5WuNvrSajOtr8FatW4khPbLwutBw
+
+### Profile
+
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoxLCJpYXQiOjE3MzgyNDE2ODcsImV4cCI6MTczODMyODA4N30.c8EHvDFlFiNCCU-5WuNvrSajOtr8FatW4khPbLwutBw
