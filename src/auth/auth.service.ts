@@ -17,9 +17,9 @@ export class AuthService {
     private artistService: ArtistsService,
   ) {}
 
-  async login(loginDTO: LoginDTO
-
-  ): Promise<{ accessToken: string }  | { validate2Fa: string, message: string }> 
+  async login(loginDTO: LoginDTO)
+  : Promise<{ accessToken: string }  
+  | { validate2Fa: string, message: string }> 
   {
     const user = await this.userService.findOne(loginDTO);
 
@@ -38,7 +38,7 @@ export class AuthService {
       if(user.enable2FA && user.twoFASecret){
         return {
           validate2Fa: 'http://localhost:3000/auth/validate-2fa',
-          message: 'Please provide the OTP password/token from your google authenticator app',
+          message: 'Please provide the OTP token from your google authenticator app',
         };
       }
 
@@ -62,10 +62,8 @@ export class AuthService {
     return { secret: user.twoFASecret };
   }
 
-  async validate2FAToken(
-    userId: number,
-    token: string,
-  ): Promise<{ verified: boolean }> {
+  async validate2FAToken(userId: number,token: string, )
+  : Promise<{ verified: boolean }> {
     try {
       const user = await this.userService.findById(userId);
 
